@@ -22,14 +22,10 @@ router.post('/login',
     authController.login
 );
 
-router.get('/profile', authController.authenticateToken, (req, res) => {
-    res.json({
-        id: req.user.userId,
-        email: req.user.email,
-        username: req.user.username,
-        dob: req.user.dob,
-    });
-});
+router.get('/profile',
+    authController.authenticateToken,
+    authController.getProfile
+);
 
 
 
